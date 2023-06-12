@@ -1,0 +1,10 @@
+class Solution:
+    def singleNumber(self,nums):
+        result = 0
+        nums2 = sorted(nums)
+        for num in nums2:
+            if nums2.count(num) > 1:
+                continue
+            elif nums2.count(num) == 1:
+                result += num
+        return result
