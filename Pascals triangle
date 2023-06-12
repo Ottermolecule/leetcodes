@@ -1,0 +1,17 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        output = []
+        for i in range(numRows):
+            output.append([None] * (i + 1))
+        for list in output:
+            list[0] = 1
+            list[-1] = 1
+            index = 0
+            while index < len(list):
+                if list[index] == None:
+                    list[index] = previous_list[index - 1] + previous_list[index]
+                index += 1
+            previous_list = list
+
+
+        return output
