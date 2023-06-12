@@ -1,0 +1,13 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        counter = -1
+        for item in digits[::-1]:
+            if 9 > item >= 0:
+                digits[counter] += 1
+                return digits
+            elif item == 9:
+                digits[counter] = 0
+                if abs(counter) == len(digits):
+                    digits.insert(0, 1)
+                counter -= 1
+        return digits
