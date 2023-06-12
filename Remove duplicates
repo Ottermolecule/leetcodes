@@ -1,0 +1,11 @@
+class Solution:
+    def removeDuplicates(self,nums):
+        j = 0
+        for num in nums[1:]:
+            i = nums[j]
+            if num == i:
+                nums.remove(num)
+            else:
+                j += 1
+        k = len(nums)
+        return k
