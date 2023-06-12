@@ -1,0 +1,10 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        romanToIntDict = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        totalVal = 0
+        for i in range(len(s)):
+            if i < len(s) - 1 and romanToIntDict[s[i]] < romanToIntDict[s[i+1]]:
+                totalVal -= romanToIntDict[s[i]]
+            else:
+                totalVal += romanToIntDict[s[i]]
+        return totalVal
