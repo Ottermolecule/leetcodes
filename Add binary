@@ -1,0 +1,39 @@
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        i = -1
+        carry = 0
+        result = ""
+        if len(a) > len(b):
+            lead_zero = (len(a) - len(b)) * "0"
+            b = lead_zero + b
+        if len(b) > len(a):
+            lead_zero = (len(b) - len(a)) * "0"
+            a = lead_zero + a
+
+        while abs(i) <= len(a):
+            if a[i] == "0" and b[i] == "0" and carry == 0:
+                result += "0"
+            elif a[i] == "1" and b[i] == "0" and carry == 0:
+                result += "1"
+            elif a[i] == "0" and b[i] == "1" and carry == 0:
+                result += "1"
+            elif a[i] == "0" and b[i] == "0" and carry == 1:
+                result += "1"
+                carry = 0
+            elif a[i] == "1" and b[i] == "1" and carry == 0:
+                result += "0"
+                carry = 1
+            elif a[i] == "1" and b[i] == "0" and carry == 1:
+                result += "0"
+                carry = 1
+            elif a[i] == "0" and b[i] == "1" and carry == 1:
+                result += "0"
+                carry = 1
+            elif a[i] == "1" and b[i] == "1" and carry == 1:
+                result += "1"
+                carry = 1
+            i -= 1
+        if carry == 1:
+            return "1" + result[::-1]
+        else:
+            return result[::-1]
