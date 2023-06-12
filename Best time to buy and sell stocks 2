@@ -1,0 +1,23 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit = 0
+        min_num = None
+        count = 0
+        while count + 1 <= len(prices):
+            if len(prices) == count +1 :
+                if min_num == None:
+                    return profit
+                if prices[-1] > min_num:
+                    profit += prices[-1] - min_num
+                return profit
+            elif prices[count] <= prices[count + 1]:
+                if min_num == None:
+                    min_num = prices[count]
+                count += 1
+            elif prices[count] > prices[count + 1] and min_num != None:
+                profit += prices[count] - min_num
+                min_num = prices[count + 1]
+                count += 1
+            else:
+                count +=1
+        return profit
