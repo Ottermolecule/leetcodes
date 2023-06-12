@@ -1,0 +1,19 @@
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        current_index = len(nums) - 1
+        distance = 1
+        if len(nums) == 1:
+            return True
+        while current_index > 0:
+            if current_index < distance:
+                return outcome
+            comparison_num = nums[current_index-distance]
+            if distance <= comparison_num:
+                current_index = current_index - distance
+                distance = 1
+                outcome = True
+            else:
+                outcome = False
+                distance += 1
+
+        return outcome
